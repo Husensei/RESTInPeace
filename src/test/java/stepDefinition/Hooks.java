@@ -1,11 +1,8 @@
 package stepDefinition;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import io.cucumber.java.*;
 
-class Hooks {
+public class Hooks {
 
     @BeforeAll
     public static void setUp() {
@@ -14,16 +11,16 @@ class Hooks {
 
     @AfterAll
     public static void tearDown() {
-        System.out.println("Before All");
+        System.out.println("After All");
     }
 
-    @BeforeEach
+    @Before
     public void beforeTest() {
-        System.out.println("Before All");
+        System.out.println("Before Test");
     }
 
-    @AfterEach
+    @After
     public void afterTest() {
-        System.out.println("Before All");
+        System.out.println("After Test");
     }
 }

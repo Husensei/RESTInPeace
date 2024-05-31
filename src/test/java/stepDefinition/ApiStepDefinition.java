@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import pages.ApiPage;
 
 public class ApiStepDefinition {
+
     ApiPage apiPage;
 
     public ApiStepDefinition() {
