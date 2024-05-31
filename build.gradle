@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.husensei'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.11.0-M2'
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.18.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.18.0'
+}
+
+test {
+    useJUnitPlatform()
+}
