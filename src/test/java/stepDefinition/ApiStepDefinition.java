@@ -25,7 +25,7 @@ public class ApiStepDefinition {
 
     @Then("validation status code is equal to {int}")
     public void validationStatusCodeIsEqualsTo(int status_code) {
-        apiPage.validationStatusCodeIsEqualsTo();
+        apiPage.validationStatusCodeIsEqualsTo(status_code);
     }
 
     @Then("validation response body GET list users")
@@ -35,6 +35,6 @@ public class ApiStepDefinition {
 
     @Then("validation response JSON with JSONSchema {string}")
     public void validationResponseJSONWithJSONSchema(String filename) {
-        apiPage.validationResponseJSONWithJSONSchema();
+        apiPage.validationResponseJSONWithJSONSchema(filename);
     }
 }
