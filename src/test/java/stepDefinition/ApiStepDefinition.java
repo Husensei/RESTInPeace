@@ -52,4 +52,14 @@ public class ApiStepDefinition {
     public void hitApiDELETEUser() {
         apiPage.hitApiDELETEUser();
     }
+
+    @And("hit api PATCH update user")
+    public void hitApiPATCHUpdateUser() {
+        apiPage.hitApiPATCHUpdateUser();
+    }
+
+    @Then("validation response body PATCH update user")
+    public void validationResponseBodyPATCHUpdateUser() {
+        apiPage.validationResponseBodyPATCHUpdateUser();
+    }
 }

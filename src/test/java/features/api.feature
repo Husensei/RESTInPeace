@@ -24,3 +24,13 @@ Feature: REST API Automation Test
     Then validation response body POST new users
     And hit api DELETE user
     Then validation status code is equal to 204
+
+  @api
+  Scenario: Test PATCH update user normal
+    Given prepare URL for "CREATE_NEW_USERS"
+    And hit api POST new user
+    Then validation status code is equal to 201
+    Then validation response body POST new users
+    And hit api PATCH update user
+    Then validation status code is equal to 200
+    Then validation response body PATCH update user

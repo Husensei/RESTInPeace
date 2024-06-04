@@ -86,4 +86,23 @@ public class ApiPage {
     public void hitApiDELETEUser() {
         res = Models.deleteUser(setURL, globalId);
     }
+
+    public void hitApiPATCHUpdateUser() {
+        res = Models.patchUpdateUser(setURL, globalId);
+    }
+
+    public void validationResponseBodyPATCHUpdateUser() {
+        JsonPath jsonPathEvaluator = res.jsonPath();
+        Integer id = jsonPathEvaluator.get("id");
+        String name = jsonPathEvaluator.get("name");
+        String email = jsonPathEvaluator.get("email");
+        String gender = jsonPathEvaluator.get("gender");
+        String status = jsonPathEvaluator.get("status");
+
+        assertThat(id).isNotNull();
+        assertThat(name).isNotNull();
+        assertThat(email).isNotNull();
+        assertThat(gender).isIn("male", "female");
+        assertThat(status).isIn("active", "inactive");
+    }
 }
