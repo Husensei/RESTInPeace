@@ -3,6 +3,7 @@ package helper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.json.JSONObject;
 
 public class Models {
 
@@ -13,11 +14,32 @@ public class Models {
                 .given()
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .header("Authorization", "8f5976736de5afcf1469d286af2a46abcc866e843b6cc0306fd7dc60f5035206");
+                    .header("Authorization", "Bearer 8f5976736de5afcf1469d286af2a46abcc866e843b6cc0306fd7dc60f5035206");
     }
 
     public static Response getListUsers(String endpoint) {
         setUpHeaders();
         return request.when().get(endpoint);
+    }
+
+    public static Response postNewUsers(String endpoint) {
+        String name = "Ahmad Husain";
+        String gender = "male";
+        String email = Utility.generateRandomEmail();
+        String status = "active";
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("gender", gender);
+        payload.put("email", email);
+        payload.put("status", status);
+
+        setUpHeaders();
+        return request.body(payload.toString()).when().post(endpoint);
+    }
+
+    public static Response deleteUser(String endpoint, String user_id) {
+        setUpHeaders();
+        String finalEndpoint = endpoint + "/" + user_id;
+        return request.when().delete(finalEndpoint);
     }
 }

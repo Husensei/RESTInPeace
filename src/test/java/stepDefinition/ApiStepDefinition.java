@@ -37,4 +37,19 @@ public class ApiStepDefinition {
     public void validationResponseJSONWithJSONSchema(String filename) {
         apiPage.validationResponseJSONWithJSONSchema(filename);
     }
+
+    @And("hit api POST new user")
+    public void hitApiPOSTNewUser() {
+        apiPage.hitApiPOSTNewUser();
+    }
+
+    @Then("validation response body POST new users")
+    public void validationResponseBodyPOSTNewUsers() {
+        apiPage.validationResponseBodyPOSTNewUsers();
+    }
+
+    @And("hit api DELETE user")
+    public void hitApiDELETEUser() {
+        apiPage.hitApiDELETEUser();
+    }
 }

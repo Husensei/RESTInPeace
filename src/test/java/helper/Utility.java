@@ -1,10 +1,21 @@
 package helper;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import java.io.File;
+import java.util.Random;
 
 public class Utility {
 
     public static File getJSONSchemaFile(String JSONFile) {
         return new File("src/test/java/helper/JSONSchemaData/" + JSONFile);
+    }
+
+    public static String generateRandomEmail() {
+        String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+        String email = "";
+        String temp = RandomStringUtils.randomAlphanumeric(10);
+        email = temp + "@testdata.com";
+        return email;
     }
 }
