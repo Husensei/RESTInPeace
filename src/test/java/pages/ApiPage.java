@@ -21,14 +21,8 @@ public class ApiPage {
             case "GET_LIST_USERS":
                 setURL = Endpoint.GET_LIST_USERS;
                 break;
-            case "GET_SPECIFIC_USERS":
-                setURL = Endpoint.GET_SPECIFIC_USERS;
-                break;
             case "CREATE_NEW_USERS":
                 setURL = Endpoint.CREATE_NEW_USERS;
-                break;
-            case "DELETE_USERS":
-                setURL = Endpoint.DELETE_USERS;
                 break;
             default:
                 System.out.println("Input valid URL");
@@ -104,5 +98,35 @@ public class ApiPage {
         assertThat(email).isNotNull();
         assertThat(gender).isIn("male", "female");
         assertThat(status).isIn("active", "inactive");
+    }
+
+    public void hitApiGETListSpecificUsers() {
+        res = Models.getListSpecificUser(setURL, globalId);
+    }
+
+    public void validationResponseBodyGETListSpecificUser() {
+        JsonPath jsonPathEvaluator = res.jsonPath();
+        Integer id = jsonPathEvaluator.get("id");
+        String name = jsonPathEvaluator.get("name");
+        String email = jsonPathEvaluator.get("email");
+        String gender = jsonPathEvaluator.get("gender");
+        String status = jsonPathEvaluator.get("status");
+
+        assertThat(id).isNotNull();
+        assertThat(name).isNotNull();
+        assertThat(email).isNotNull();
+        assertThat(gender).isIn("male", "female");
+        assertThat(status).isIn("active", "inactive");
+    }
+
+    public void hitApiGETListDataInvalidUsers() {
+        res = Models.getListInvalidUser(setURL);
+    }
+
+    public void validationResponseBodyGETListInvalidUser() {
+        JsonPath jsonPathEvaluator = res.jsonPath();
+        String message = jsonPathEvaluator.get("message");
+
+        assertThat(message).isEqualTo("Resource not found");
     }
 }

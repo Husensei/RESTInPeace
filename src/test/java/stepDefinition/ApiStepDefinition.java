@@ -62,4 +62,24 @@ public class ApiStepDefinition {
     public void validationResponseBodyPATCHUpdateUser() {
         apiPage.validationResponseBodyPATCHUpdateUser();
     }
+
+    @And("hit api GET list specific users")
+    public void hitApiGETListSpecificUsers() {
+        apiPage.hitApiGETListSpecificUsers();
+    }
+
+    @Then("validation response body GET list specific user")
+    public void validationResponseBodyGETListSpecificUser() {
+        apiPage.validationResponseBodyGETListSpecificUser();
+    }
+
+    @And("hit api GET list data invalid users")
+    public void hitApiGETListDataInvalidUsers() {
+        apiPage.hitApiGETListDataInvalidUsers();
+    }
+
+    @Then("validation response body GET list invalid user")
+    public void validationResponseBodyGETListInvalidUser() {
+        apiPage.validationResponseBodyGETListInvalidUser();
+    }
 }

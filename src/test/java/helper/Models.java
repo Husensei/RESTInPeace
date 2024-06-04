@@ -59,4 +59,17 @@ public class Models {
         String finalEndpoint = endpoint + "/" + user_id;
         return request.body(payload.toString()).when().patch(finalEndpoint);
     }
+
+    public static Response getListSpecificUser(String endpoint, String user_id) {
+        setUpHeaders();
+        String finalEndpoint = endpoint + "/" + user_id;
+        return request.when().get(finalEndpoint);
+    }
+
+    public static Response getListInvalidUser(String endpoint) {
+        setUpHeaders();
+        String user_id = Utility.generateRandomUserId();
+        String finalEndpoint = endpoint + "/" + user_id;
+        return request.when().get(finalEndpoint);
+    }
 }

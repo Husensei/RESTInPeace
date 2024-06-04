@@ -18,4 +18,16 @@ public class Utility {
         email = temp + "@testdata.com";
         return email;
     }
+
+    public static String generateRandomUserId() {
+        StringBuilder userIdBuilder = new StringBuilder();
+        Random random = new Random();
+
+        while (userIdBuilder.length() < 7) {
+            int randomDigit = random.nextInt(5) + 1;
+            userIdBuilder.append(randomDigit);
+        }
+
+        return userIdBuilder.toString();
+    }
 }
