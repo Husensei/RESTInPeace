@@ -35,6 +35,17 @@ Feature: REST API Automation Test
     Then validation response body POST new users
     Then validation response JSON with JSONSchema "post_new_users_normal.json"
 
+  @api @post @negative
+  Scenario: Test POST new user using existing email
+    Given prepare URL for "CREATE_NEW_USERS"
+    And hit api POST new user
+    Then validation status code is equal to 201
+    Then validation response body POST new users
+    And hit api POST new user using existing email
+    Then validation status code is equal to 422
+    Then validation response body POST new user using existing email
+    Then validation response JSON with JSONSchema "post_new_users_existing_email.json"
+
   @api @delete @positive
   Scenario: Test DELETE user normal
     Given prepare URL for "CREATE_NEW_USERS"

@@ -12,9 +12,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApiPage {
-    String setURL, globalId;
+    String setURL, globalId, existingEmail;
     Response res;
-    int userId = 6943005;
 
     public void prepareURLFor(String url) {
         switch (url) {
@@ -60,6 +59,10 @@ public class ApiPage {
         res = Models.postNewUsers(setURL);
     }
 
+    public void hitApiPOSTNewUserUsingExistingEmail() {
+        res = Models.postNewUserUsingExistingEmail(setURL, existingEmail);
+    }
+
     public void validationResponseBodyPOSTNewUsers() {
         JsonPath jsonPathEvaluator = res.jsonPath();
         Integer id = jsonPathEvaluator.get("id");
@@ -75,6 +78,15 @@ public class ApiPage {
         assertThat(status).isIn("active", "inactive");
 
         globalId = Integer.toString(id);
+        existingEmail = email;
+    }
+
+    public void validationResponseBodyPOSTNewUserUsingExistingEmail() {
+        List<Object> field = res.jsonPath().getList("field");
+        List<Object> message = res.jsonPath().getList("message");
+
+        assertThat(field.getFirst().toString()).isEqualTo("email");
+        assertThat(message.getFirst().toString()).isEqualTo("has already been taken");
     }
 
     public void hitApiDELETEUser() {

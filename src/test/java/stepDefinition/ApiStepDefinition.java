@@ -48,6 +48,11 @@ public class ApiStepDefinition {
         apiPage.validationResponseBodyPOSTNewUsers();
     }
 
+    @And("hit api POST new user using existing email")
+    public void hitApiPOSTNewUserUsingExistingEmail() {
+        apiPage.hitApiPOSTNewUserUsingExistingEmail();
+    }
+
     @And("hit api DELETE user")
     public void hitApiDELETEUser() {
         apiPage.hitApiDELETEUser();
@@ -81,5 +86,11 @@ public class ApiStepDefinition {
     @Then("validation response body GET list invalid user")
     public void validationResponseBodyGETListInvalidUser() {
         apiPage.validationResponseBodyGETListInvalidUser();
+    }
+
+
+    @Then("validation response body POST new user using existing email")
+    public void validationResponseBodyPOSTNewUserUsingExistingEmail() {
+        apiPage.validationResponseBodyPOSTNewUserUsingExistingEmail();
     }
 }

@@ -12,7 +12,6 @@ public class Utility {
     }
 
     public static String generateRandomEmail() {
-        String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
         String email = "";
         String temp = RandomStringUtils.randomAlphanumeric(10);
         email = temp + "@testdata.com";

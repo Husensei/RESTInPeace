@@ -23,7 +23,7 @@ public class Models {
     }
 
     public static Response postNewUsers(String endpoint) {
-        String name = "Ahmad Husain";
+        String name = "Test Name";
         String gender = "male";
         String email = Utility.generateRandomEmail();
         String status = "active";
@@ -31,6 +31,20 @@ public class Models {
         payload.put("name", name);
         payload.put("gender", gender);
         payload.put("email", email);
+        payload.put("status", status);
+
+        setUpHeaders();
+        return request.body(payload.toString()).when().post(endpoint);
+    }
+
+    public static Response postNewUserUsingExistingEmail(String endpoint, String existingEmail) {
+        String name = "Test Name";
+        String gender = "male";
+        String status = "active";
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("gender", gender);
+        payload.put("email", existingEmail);
         payload.put("status", status);
 
         setUpHeaders();
