@@ -18,19 +18,9 @@ public class ApiStepDefinition {
         apiPage.prepareURLFor(url);
     }
 
-    @And("hit api GET list users")
-    public void hitApiGETListUsers() {
-        apiPage.hitApiGETListUsers();
-    }
-
     @Then("validation status code is equal to {int}")
     public void validationStatusCodeIsEqualsTo(int status_code) {
         apiPage.validationStatusCodeIsEqualsTo(status_code);
-    }
-
-    @Then("validation response body GET list users")
-    public void validationResponseBodyGETListUsers() {
-        apiPage.validationResponseBodyGETListUsers();
     }
 
     @Then("validation response JSON with JSONSchema {string}")
@@ -38,34 +28,14 @@ public class ApiStepDefinition {
         apiPage.validationResponseJSONWithJSONSchema(filename);
     }
 
-    @And("hit api POST new user")
-    public void hitApiPOSTNewUser() {
-        apiPage.hitApiPOSTNewUser();
+    @And("hit api GET list users")
+    public void hitApiGETListUsers() {
+        apiPage.hitApiGETListUsers();
     }
 
-    @Then("validation response body POST new users")
-    public void validationResponseBodyPOSTNewUsers() {
-        apiPage.validationResponseBodyPOSTNewUsers();
-    }
-
-    @And("hit api POST new user using existing email")
-    public void hitApiPOSTNewUserUsingExistingEmail() {
-        apiPage.hitApiPOSTNewUserUsingExistingEmail();
-    }
-
-    @And("hit api DELETE user")
-    public void hitApiDELETEUser() {
-        apiPage.hitApiDELETEUser();
-    }
-
-    @And("hit api PATCH update user")
-    public void hitApiPATCHUpdateUser() {
-        apiPage.hitApiPATCHUpdateUser();
-    }
-
-    @Then("validation response body PATCH update user")
-    public void validationResponseBodyPATCHUpdateUser() {
-        apiPage.validationResponseBodyPATCHUpdateUser();
+    @Then("validation response body GET list users")
+    public void validationResponseBodyGETListUsers() {
+        apiPage.validationResponseBodyGETListUsers();
     }
 
     @And("hit api GET list specific users")
@@ -88,9 +58,58 @@ public class ApiStepDefinition {
         apiPage.validationResponseBodyGETListInvalidUser();
     }
 
+    @And("hit api POST new user")
+    public void hitApiPOSTNewUser() {
+        apiPage.hitApiPOSTNewUser();
+    }
+
+    @Then("validation response body POST new users")
+    public void validationResponseBodyPOSTNewUsers() {
+        apiPage.validationResponseBodyPOSTNewUsers();
+    }
+
+    @And("hit api POST new user using existing email")
+    public void hitApiPOSTNewUserUsingExistingEmail() {
+        apiPage.hitApiPOSTNewUserUsingExistingEmail();
+    }
 
     @Then("validation response body POST new user using existing email")
     public void validationResponseBodyPOSTNewUserUsingExistingEmail() {
         apiPage.validationResponseBodyPOSTNewUserUsingExistingEmail();
+    }
+
+    @And("hit api POST new user using invalid gender and status")
+    public void hitApiPOSTNewUserUsingInvalidGenderAndStatus() {
+        apiPage.hitApiPOSTNewUserUsingInvalidGenderAndStatus();
+    }
+
+    @Then("validation response body POST new user using invalid gender and status")
+    public void validationResponseBodyPOSTNewUserUsingInvalidGenderAndStatus() {
+        apiPage.validationResponseBodyPOSTNewUserUsingInvalidGenderAndStatus();
+    }
+
+    @And("hit api PATCH update user")
+    public void hitApiPATCHUpdateUser() {
+        apiPage.hitApiPATCHUpdateUser();
+    }
+
+    @Then("validation response body PATCH update user")
+    public void validationResponseBodyPATCHUpdateUser() {
+        apiPage.validationResponseBodyPATCHUpdateUser();
+    }
+
+    @And("hit api DELETE user")
+    public void hitApiDELETEUser() {
+        apiPage.hitApiDELETEUser();
+    }
+
+    @And("hit api DELETE invalid user")
+    public void hitApiDELETEInvalidUser() {
+        apiPage.hitApiDELETEInvalidUser();
+    }
+
+    @Then("validation response body DELETE invalid user")
+    public void validationResponseBodyDELETEInvalidUser() {
+        apiPage.validationResponseBodyDELETEInvalidUser();
     }
 }

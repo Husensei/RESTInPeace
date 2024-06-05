@@ -23,6 +23,9 @@ public class ApiPage {
             case "CREATE_NEW_USERS":
                 setURL = Endpoint.CREATE_NEW_USERS;
                 break;
+            case "DELETE_USERS":
+                setURL = Endpoint.DELETE_USERS;
+                break;
             default:
                 System.out.println("Input valid URL");
         }
@@ -63,6 +66,10 @@ public class ApiPage {
         res = Models.postNewUserUsingExistingEmail(setURL, existingEmail);
     }
 
+    public void hitApiPOSTNewUserUsingInvalidGenderAndStatus() {
+        res = Models.postNewUserUsingInvalidGenderAndStatus(setURL);
+    }
+
     public void validationResponseBodyPOSTNewUsers() {
         JsonPath jsonPathEvaluator = res.jsonPath();
         Integer id = jsonPathEvaluator.get("id");
@@ -87,6 +94,16 @@ public class ApiPage {
 
         assertThat(field.getFirst().toString()).isEqualTo("email");
         assertThat(message.getFirst().toString()).isEqualTo("has already been taken");
+    }
+
+    public void validationResponseBodyPOSTNewUserUsingInvalidGenderAndStatus() {
+        List<Object> field = res.jsonPath().getList("field");
+        List<Object> message = res.jsonPath().getList("message");
+
+        assertThat(field.getFirst().toString()).isEqualTo("gender");
+        assertThat(message.getFirst().toString()).isEqualTo("can't be blank, can be male of female");
+        assertThat(field.get(1).toString()).isEqualTo("status");
+        assertThat(message.get(1).toString()).isEqualTo("can't be blank");
     }
 
     public void hitApiDELETEUser() {
@@ -136,6 +153,17 @@ public class ApiPage {
     }
 
     public void validationResponseBodyGETListInvalidUser() {
+        JsonPath jsonPathEvaluator = res.jsonPath();
+        String message = jsonPathEvaluator.get("message");
+
+        assertThat(message).isEqualTo("Resource not found");
+    }
+
+    public void hitApiDELETEInvalidUser() {
+        res = Models.deleteInvalidUser(setURL);
+    }
+
+    public void validationResponseBodyDELETEInvalidUser() {
         JsonPath jsonPathEvaluator = res.jsonPath();
         String message = jsonPathEvaluator.get("message");
 

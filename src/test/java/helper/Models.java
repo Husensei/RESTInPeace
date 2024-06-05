@@ -51,6 +51,21 @@ public class Models {
         return request.body(payload.toString()).when().post(endpoint);
     }
 
+    public static Response postNewUserUsingInvalidGenderAndStatus(String endpoint) {
+        String name = "Test Name";
+        String gender = "helicopter";
+        String email = Utility.generateRandomEmail();
+        String status = "offline";
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("gender", gender);
+        payload.put("email", email);
+        payload.put("status", status);
+
+        setUpHeaders();
+        return request.body(payload.toString()).when().post(endpoint);
+    }
+
     public static Response deleteUser(String endpoint, String user_id) {
         setUpHeaders();
         String finalEndpoint = endpoint + "/" + user_id;
@@ -85,5 +100,12 @@ public class Models {
         String user_id = Utility.generateRandomUserId();
         String finalEndpoint = endpoint + "/" + user_id;
         return request.when().get(finalEndpoint);
+    }
+
+    public static Response deleteInvalidUser(String endpoint) {
+        setUpHeaders();
+        String user_id = Utility.generateRandomUserId();
+        String finalEndpoint = endpoint + "/" + user_id;
+        return request.when().delete(finalEndpoint);
     }
 }
