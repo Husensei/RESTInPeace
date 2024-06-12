@@ -30,16 +30,16 @@ jobs:
     - name: Run API tests
       run: ./gradlew apiTest
       
-    # - name: Upload Build Artifact
-    #   uses: actions/upload-artifact@v4.3.3
-    #   if: always()
-    #   with:
-    #     name: Cucumber Report
-    #     path: reports
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4.3.3
+      if: always()
+      with:
+        name: Cucumber Report
+        path: reports
 
-    # - name: GitHub Pages action
-    #   uses: peaceiris/actions-gh-pages@v4.0.0
-    #   if: always()
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: reports
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v4.0.0
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: reports
