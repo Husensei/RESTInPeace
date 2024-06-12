@@ -16,7 +16,7 @@ While you don't need to install Gradle to run the tests, you will need Java inst
 Refer to the official [Java download page](https://www.java.com/en/download/) for installation instructions.
 
 * Prerequisites
-  * Java 11 or later installed
+  * Java 17 or later installed
 
 * Setting Up
   
