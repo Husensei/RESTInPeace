@@ -35,6 +35,8 @@ configurations {
     }
 }
 
+// def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+
 tasks.register("apiTest") {
     dependsOn assemble, testClasses
     doLast {
@@ -46,6 +48,7 @@ tasks.register("apiTest") {
                     '--plugin', 'html:reports/cucumber-api-report.html',
                     '--glue', 'stepDefinition',
                     '--tags', "@api",
+//                    '--tags', "${tags}",
                     'src/test/java/features'
             ]
         }
